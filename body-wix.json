@@ -1,0 +1,16 @@
+{
+  "school_county":  "Santa Clara",
+  "school_district": "Santa Clara Unified",
+  "school_name": "Washington Open Elementary",
+  "first_name": "John",
+  "last_name": "Doe",
+  "relation_to_child": "Father",
+  "email": "john@example.com",
+  "phone": "+1-212-456-7890",
+  "street_address": "1234 Main Street",
+  "city": "Redondo Beach",
+  "state": "CA",
+  "zip": "90278",
+  "child_full_name": "James Doe",
+  "child_grade": "3rd grade"
+}

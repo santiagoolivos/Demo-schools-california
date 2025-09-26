@@ -1,0 +1,50 @@
+{
+  "title": "Demo Schools California",
+  "documents": [
+    {
+      "format": "docx",
+      "url": "https://api.signatureapi.com/v1/uploads/upl_2vdcobYR5VGG5ippcq0eZC#template-to-sign",
+      "data": {
+        "parent": {
+            "full_name":  "John Doe",
+            "street_address": "1234 Main Street",
+            "city": "Redondo Beach",
+            "state": "CA",
+            "zip":"90278" ,
+            "relation_to_child": "Father",
+            "completed_date": "26/09/2025"
+        },
+        "school": {
+            "principal_full_name":"Heidi Pilawski",
+            "name": "Washington Open Elementary",
+            "street_address": "270 Washington Ave.",
+            "city": "Santa Clara",
+            "state": "CA",
+            "zip": "95050-5950"
+        },
+        "child": {
+            "full_name": "James Doe",
+            "grade": "3rd grade",
+            "school": "Washington Open Elementary",
+            "school_district":"Santa Clara Unified"
+        }
+      },
+      "places": [
+        {
+          "key": "parent_signature",
+          "type": "signature",
+          "recipient_key": "parent"
+        }
+      ]
+    }
+  ],
+  "recipients": [
+    {
+      "type": "signer",
+      "key": "parent",
+      "name":"John Doe",
+      "email": "john@example.com",
+      "ceremony": {"authentication": [{"type": "custom", "provider": "Informed Parents", "data": {"n8n_id": "example_id"}}]}
+    }
+  ]
+}
