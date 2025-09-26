@@ -44,7 +44,7 @@
       "key": "parent",
       "name":"John Doe",
       "email": "john@example.com",
-      "ceremony": {"authentication": [{"type": "custom", "provider": "Informed Parents", "data": {"n8n_id": "example_id"}}]}
+      "ceremony": {"authentication": [{"type": "custom", "provider": "Informed Parents", "data": {"n8n_id": "example_id"}}], "redirect_url": "https://santiagoolivos.github.io/Demo-schools-california/success.html"}
     }
   ]
 }
