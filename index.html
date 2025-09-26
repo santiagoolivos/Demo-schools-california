@@ -88,8 +88,7 @@
                     body: JSON.stringify(postData)
                 });
                 
-                // Con no-cors mode, no podemos leer la respuesta, pero el request se envía
-                console.log('Datos enviados (no-cors mode)', response);
+                console.log('response', response);
                 showMessage('¡Datos enviados correctamente!', 'success');
                 
             } catch (error) {
