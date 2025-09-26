@@ -3,74 +3,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demo Schools California</title>
+    <title>Opt-Out Registration Form</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'california-blue': '#1e40af',
-                        'california-gold': '#f59e0b',
+                        'form-blue': '#4a5568',
+                        'form-bg': '#667eea',
                     }
                 }
             }
         }
     </script>
+    <script src="districts-data.js"></script>
 </head>
-<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
-    <div class="min-h-screen flex flex-col items-center justify-center px-4">
-        <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-12 max-w-2xl w-full text-center">
+<body class="bg-blue-900 min-h-screen">
+    <div class="min-h-screen flex flex-col items-center justify-center px-4 py-8">
+        <div class="bg-white rounded-lg shadow-xl p-8 max-w-2xl w-full">
             <!-- Title -->
-            <h1 class="text-4xl md:text-6xl font-bold bg-gradient-to-r from-california-blue to-indigo-600 bg-clip-text text-transparent mb-12">
-                Demo Schools California
+            <h1 class="text-3xl font-bold text-blue-600 text-center mb-2">
+                Opt-Out Registration Form
             </h1>
+            
+            <!-- Subtitle -->
+            <div class="bg-blue-50 rounded-lg p-4 mb-6 text-center">
+                <p class="text-blue-700 font-medium mb-2">Opt-Out Form</p>
+                <p class="text-gray-600 text-sm">
+                    Please fill in the fields below. Each field must be filled in for us to generate your OPTOUT Notice.
+                </p>
+            </div>
             
             <!-- Form -->
             <form 
                 action="https://santiagoolivos.app.n8n.cloud/webhook/1536ff38-d614-4376-a07b-7c3b54dc1d78" 
                 method="POST"
                 id="schoolForm"
+                class="space-y-4"
             >
-                <!-- Fields -->
+                <!-- Hidden field for county -->
                 <input type="hidden" name="school_county" value="Santa Clara">
-                <input type="hidden" name="school_district" value="Santa Clara Unified">
-                <input type="hidden" name="school_name" value="Washington Open Elementary">
-                <input type="hidden" name="first_name" value="John">
-                <input type="hidden" name="last_name" value="Doe">
-                <input type="hidden" name="relation_to_child" value="Father">
-                <input type="hidden" name="email" value="john@example.com">
-                <input type="hidden" name="phone" value="+1-212-456-7890">
-                <input type="hidden" name="street_address" value="1234 Main Street">
-                <input type="hidden" name="city" value="Redondo Beach">
-                <input type="hidden" name="state" value="CA">
-                <input type="hidden" name="zip" value="90278">
-                <input type="hidden" name="child_full_name" value="James Doe">
-                <input type="hidden" name="child_grade" value="3rd grade">
+                
+                <!-- Name Fields -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="first_name" class="block text-sm font-medium text-blue-600 mb-1">Your First Name *</label>
+                        <input type="text" name="first_name" id="first_name" required 
+                               class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    
+                    <div>
+                        <label for="last_name" class="block text-sm font-medium text-blue-600 mb-1">Your Last Name *</label>
+                        <input type="text" name="last_name" id="last_name" required 
+                               class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
+                
+                <!-- Relation to Child -->
+                <div>
+                    <label for="relation_to_child" class="block text-sm font-medium text-blue-600 mb-1">Your Relation to Child *</label>
+                    <input type="text" name="relation_to_child" id="relation_to_child" required 
+                           class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                
+                <!-- Child Full Name -->
+                <div>
+                    <label for="child_full_name" class="block text-sm font-medium text-blue-600 mb-1">Child Full Name *</label>
+                    <input type="text" name="child_full_name" id="child_full_name" required 
+                           class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                
+                <!-- Child Grade -->
+                <div>
+                    <label for="child_grade" class="block text-sm font-medium text-blue-600 mb-1">Child Grade *</label>
+                    <input type="text" name="child_grade" id="child_grade" required 
+                           class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 "
+                           placeholder="3r grade">
+                </div>
+                
+                <!-- Email and Phone -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-blue-600 mb-1">Your Email *</label>
+                        <input type="email" name="email" id="email" required 
+                               class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-blue-600 mb-1">Your Phone *</label>
+                        <input type="tel" name="phone" id="phone" required 
+                               class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
+                
+                <!-- Street Address -->
+                <div>
+                    <label for="street_address" class="block text-sm font-medium text-blue-600 mb-1">Your Street Address *</label>
+                    <input type="text" name="street_address" id="street_address" required 
+                           class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                
+                <!-- City -->
+                <div>
+                    <label for="city" class="block text-sm font-medium text-blue-600 mb-1">Your City *</label>
+                    <input type="text" name="city" id="city" required 
+                           class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ">
+                </div>
+                
+                <!-- State and ZIP -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="state" class="block text-sm font-medium text-blue-600 mb-1">Your State (2 letters) *</label>
+                        <input type="text" name="state" id="state" required maxlength="2" value="CA"
+                               class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    
+                    <div>
+                        <label for="zip" class="block text-sm font-medium text-blue-600 mb-1">Your Zip *</label>
+                        <input type="text" name="zip" id="zip" required
+                               class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
+                
+                <!-- School District -->
+                <div>
+                    <label for="school_district" class="block text-sm font-medium text-blue-600 mb-1">Child School District *</label>
+                    <select name="school_district" id="school_district" required 
+                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none bg-white">
+                        <option value="">Select a district...</option>
+                    </select>
+                </div>
+                
+                <!-- School Name -->
+                <div>
+                    <label for="school_name" class="block text-sm font-medium text-blue-600 mb-1">School *</label>
+                    <select name="school_name" id="school_name" required disabled
+                            class="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none bg-gray-100">
+                        <option value="">First select a district...</option>
+                    </select>
+                </div>
+                
                 
                 <!-- Button -->
-                <button 
-                    type="submit"
-                    id="submitBtn"
-                    class="bg-gradient-to-r from-california-blue to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-4 px-8 md:px-12 rounded-xl text-lg md:text-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50"
-                >
-                    Submit
-                </button>
+                <div class="text-center pt-6">
+                    <button 
+                        type="submit"
+                        id="submitBtn"
+                        class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded transition-colors duration-200"
+                    >
+                        Submit
+                    </button>
+                </div>
             </form>
-            
-            <!-- Decorations -->
-            <div class="mt-8 flex justify-center space-x-2">
-                <div class="w-2 h-2 bg-california-blue rounded-full animate-pulse"></div>
-                <div class="w-2 h-2 bg-indigo-500 rounded-full animate-pulse" style="animation-delay: 0.2s;"></div>
-                <div class="w-2 h-2 bg-california-gold rounded-full animate-pulse" style="animation-delay: 0.4s;"></div>
-            </div>
-        </div>
-        
-        <!-- Footer - Just a comment -->
-        <div class="mt-8 text-gray-500 text-sm">
-            <p>Demo page for California schools</p>
         </div>
     </div>
 
+    <script>
+        // Populate the districts dropdown
+        function populateDistricts() {
+            const districtSelect = document.getElementById('school_district');
+            
+            if (!districtsSchools || Object.keys(districtsSchools).length === 0) {
+                districtSelect.innerHTML = '<option value="">No districts available</option>';
+                console.error('Districts data not available');
+                return;
+            }
+            
+            // Clear existing options
+            districtSelect.innerHTML = '<option value="">Select a district...</option>';
+            
+            // Sort districts alphabetically and add to dropdown
+            const sortedDistricts = Object.keys(districtsSchools).sort();
+            console.log('Populating districts:', sortedDistricts.length);
+            
+            sortedDistricts.forEach(district => {
+                const option = document.createElement('option');
+                option.value = district;
+                option.textContent = district;
+                districtSelect.appendChild(option);
+            });
+            
+            console.log('✅ Districts loaded successfully!');
+        }
+        
+        // Handle district selection change
+        function handleDistrictChange() {
+            const districtSelect = document.getElementById('school_district');
+            const schoolSelect = document.getElementById('school_name');
+            const selectedDistrict = districtSelect.value;
+            
+            console.log('District selected:', selectedDistrict);
+            
+            // Clear and reset school dropdown
+            schoolSelect.innerHTML = '<option value="">Select a school...</option>';
+            
+            if (selectedDistrict && districtsSchools[selectedDistrict]) {
+                // Enable school dropdown
+                schoolSelect.disabled = false;
+                schoolSelect.classList.remove('bg-gray-100');
+                schoolSelect.classList.add('bg-white');
+                
+                // Populate schools for selected district
+                const schools = districtsSchools[selectedDistrict];
+                console.log('Schools for district:', schools.length);
+                
+                schools.forEach(school => {
+                    const option = document.createElement('option');
+                    option.value = school;
+                    option.textContent = school;
+                    schoolSelect.appendChild(option);
+                });
+            } else {
+                // Disable school dropdown
+                schoolSelect.disabled = true;
+                schoolSelect.classList.remove('bg-white');
+                schoolSelect.classList.add('bg-gray-100');
+                schoolSelect.innerHTML = '<option value="">First select a district...</option>';
+            }
+        }
+        
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing...');
+            console.log('Districts data available:', typeof districtsSchools !== 'undefined');
+            
+            // Populate districts immediately (no fetch needed)
+            populateDistricts();
+            
+            // Add event listener for district change
+            const districtSelect = document.getElementById('school_district');
+            if (districtSelect) {
+                districtSelect.addEventListener('change', handleDistrictChange);
+                console.log('Event listener added to district select');
+            } else {
+                console.error('District select element not found');
+            }
+        });
+    </script>
 </body>
 </html>
